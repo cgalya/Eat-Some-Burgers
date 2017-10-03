@@ -1,60 +1,49 @@
-<h1>Burgers!</h1>
+<div class="wrapper">
+<h1>Eat Some Burgers!</h1>
 
-<h2>Burgers that are not devoured</h2>
-
-<ul>
+<div class="content">
+<div class="available">
+<h2>Burgers Available for Eating</h2>
+<ul id="avail-burgers">
   {{#each burgers}}
     {{#unless this.devoured}}
-      <li>
+      <li class="devour-li">
         {{this.burger_name}}
-
         <form action="/{{this.id}}?_method=PUT" method="POST">
           <input type="hidden" name="devoured" value="true">
-          <button type="submit">TIME TO EAT!</button>
-        </form>
-
-        <form action="/{{this.id}}?_method=DELETE" method="POST">
-          <!-- option 2, pass in the id of the cat inside the form - you would access this in the route using req.body.id not req.params.id -->
-          <!-- <input type="hidden" name="id" value="{{this.id}}"> -->
-          <button type="submit">DELETE</button>
+          <button type="submit">DEVOUR BURGER!</button>
         </form>
       </li>
     {{/unless}}
   {{/each}}
 </ul>
+</div>
 
-<h2>Devoured Burgers</h2>
+<img src="/assets/images/burger.png" id="burger-pic">
 
-<ul>
+<div class="eaten">
+<h2>Burgers Previously Enjoyed</h2>
+<ul id="eaten-burgers">
   {{#each burgers}}
     {{#if this.devoured}}
       <li>
-        {{this.name}}
-
-        <form action="/{{this.id}}?_method=PUT" method="POST">
-          <input type="hidden" name="devoured" value="false">
-          <button type="submit">WAKE UP!</button>
-        </form>
-
-        {{> burgers/delete-burger}}
+        {{this.burger_name}}
       </li>
     {{/if}}
   {{/each}}
 </ul>
+</div>
+</div>
 
-<h2>Add a burger</h2>
-<form class="create-update-form" action="/" method="POST">
-
+<div class="add">
+<h2 id="add-title">Add a Burger</h2>
+<form class="create-update-form" action="/" method="POST" id="add-burger">
   <div class="form-group">
     <label for="ca">Burger Name:</label>
-    <input type="text" id="ca" name="name">
+    <input type="text" id="ca" name="burger_name">
   </div>
-
-  <div class="form-group">
-    <label for="slee">Devoured?</label><br>
-    <input type="radio" name="devoured" value="1" checked> Devoured!<br>
-    <input type="radio" name="devoured" value="0"> Awake
-  </div>
-
   <button type="submit">Add Burger</button>
 </form>
+</div>
+
+</div>

@@ -24,17 +24,20 @@ function objToSql(ob) {
   return arr.toString();
 }
 
-// Object for all our SQL statement functions.
+// ORM object creates SQL queries
 var orm = {
+  //all function returns all table entries
   all: function(tableInput, cb) {
+    //construct the SQL query
     var queryString = "SELECT * FROM " + tableInput + ";";
+    //connect to the database and perform the SQL query
     connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
+      if (err) throw err;
+      //callback result
       cb(result);
     });
   },
+  //create function inserts a single table entry
   create: function(table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 
@@ -48,13 +51,11 @@ var orm = {
     console.log(queryString);
 
     connection.query(queryString, vals, function(err, result) {
-      if (err) {
-        throw err;
-      }
+      if (err) throw err;
       cb(result);
     });
   },
-  // An example of objColVals would be {name: panther, sleepy: true}
+  //update function updates a single table entry
   update: function(table, objColVals, condition, cb) {
     var queryString = "UPDATE " + table;
 
@@ -65,26 +66,20 @@ var orm = {
 
     console.log(queryString);
     connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
-
+      if (err) throw err;
       cb(result);
     });
   },
-  delete: function(table, condition, cb) {
-    var queryString = "DELETE FROM " + table;
-    queryString += " WHERE ";
-    queryString += condition;
-
-    connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
-
-      cb(result);
-    });
-  }
+  // delete: function(table, condition, cb) {
+  //   var queryString = "DELETE FROM " + table;
+  //   queryString += " WHERE ";
+  //   queryString += condition;
+  //
+  //   connection.query(queryString, function(err, result) {
+  //     if (err) throw err;
+  //     cb(result);
+  //   });
+  // }
 };
 
 // Export the orm object for the model (cat.js).
