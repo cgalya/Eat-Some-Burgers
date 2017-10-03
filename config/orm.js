@@ -55,7 +55,7 @@ var orm = {
       cb(result);
     });
   },
-  //update function updates a single table entry
+  //Update function updates a single table entry
   update: function(table, objColVals, condition, cb) {
     var queryString = "UPDATE " + table;
 
@@ -69,18 +69,8 @@ var orm = {
       if (err) throw err;
       cb(result);
     });
-  },
-  // delete: function(table, condition, cb) {
-  //   var queryString = "DELETE FROM " + table;
-  //   queryString += " WHERE ";
-  //   queryString += condition;
-  //
-  //   connection.query(queryString, function(err, result) {
-  //     if (err) throw err;
-  //     cb(result);
-  //   });
-  // }
+  }
 };
 
-// Export the orm object for the model (cat.js).
+// Export the orm object for the model (burger.js).
 module.exports = orm;

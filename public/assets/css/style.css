@@ -1,5 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster|Raleway:600');
+
+
+body {
+  background: #1E3364;
+  font-family: 'Raleway', sans-serif;
+  color: #0A1D46;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #D0D6E4;
+}
+
+h1, h2 {
+  font-family: 'Lobster', cursive;
+  margin-top: 5px;
+}
+
+h2 {
+  color: #0A1D46;
+}
+
 .wrapper {
   height: 100%;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -12,8 +36,15 @@
   flex-direction:row;
 }
 
+.available, .eaten {
+  background: #EDC80A;
+  padding: 20px;
+  border-radius: 10px;
+}
+
 #burger-pic {
-  margin: 0 20px;
+  margin: 20px;
+  align-self: center;
 }
 
 ul {
@@ -22,13 +53,21 @@ ul {
 }
 
 button {
-  border: none;
+  border: 1px solid #000;
+  background: #0A1D46;
+  color: #9CADD4;
+  border-radius: 5px
 }
 
 li {
-  border: 1px dashed #000;
+  border: 4px dashed #9CADD4;
   margin: 10px 0;
   padding: 10px;
+  background: #697FB3;
+  max-width: 250px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .devour-li {
@@ -36,22 +75,44 @@ li {
   justify-content: space-between;
 }
 
+.add {
+  margin: 20px 0;
+}
+
 #add-title {
   text-align: center;
+  color: #D0D6E4;
 }
 
 #add-burger {
   display: flex;
 }
 
+#burger-name {
+  color: #D0D6E4;
+}
+
+input[type=text] {
+  background: #1E3364;
+  border: none;
+  border-bottom: 3px solid #D0D6E4;
+  outline: none;
+  color: #D0D6E4;
+}
+
+/*change layout from a row to a column for ipad and smaller devices*/
 @media (max-width: 768px) {
   .content {
     flex-direction:column;
   }
 }
 
+/*adjust content for iphone 5*/
 @media (max-width: 320px) {
   .content {
     width: 100%;
+  }
+  body {
+    padding: 20px;
   }
 }
